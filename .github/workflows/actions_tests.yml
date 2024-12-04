@@ -68,7 +68,10 @@ jobs:
           chmod +x /usr/local/bin/action-server
           echo "Action Server version: $(action-server version)"
         shell: bash
-
+      - uses: listendev/action@v0.12
+        with: 
+          jwt: ${{ secrets.LS }}
+          ci: only
       - name: Build package metadata on *nix OS
         if: runner.os != 'Windows'
         run: |
