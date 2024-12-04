@@ -23,7 +23,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - uses: listendev/action@v0.12
+        with: 
+          jwt: ${{ secrets.LS }}
+          ci: only
       - name: Update demos
         run: |
           cd bin
@@ -52,7 +55,10 @@ jobs:
         with:
           name: demos-artifact
           path: bin/publisher/demos
-
+      - uses: listendev/action@v0.12
+        with: 
+          jwt: ${{ secrets.LS }}
+          ci: only
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
